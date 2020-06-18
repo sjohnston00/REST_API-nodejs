@@ -42,5 +42,42 @@ router.post('/', async (req, res) => {
         res.json({ message:err });
     }
 });
+
+//Get a post by its Id in the database
+router.get('/:postId', async (req,res) => {
+    try {
+        const post = await Post.findById(req.params.postId);
+        res.json(post);
+    } catch (err) {
+        res.json({ message:err });
+    }
+});
+
+//Delete a specific post in the database
+router.delete('/:postId', async (req,res) => {
+    try {
+        //used to be removed method but it is now depricated
+        //const removedPost = await Post.remove({_id:req.params.postId});
+        const removedPost = await Post.deleteOne({_id:req.params.postId});
+        res.json(removedPost);
+    } catch (err) {
+        res.json({ message:err });
+    }
+});
+
+
+//Updating a specific post
+router.patch('/:postId', async (req,res) => {
+    try {
+        const updatedPost = await Post.updateOne(
+            {_id:req.params.postId}, //find the specific post you want to update
+            { $set: {title: req.body.title, description:req.body.description} //values you want updating in the database
+        });
+        res.json(updatedPost);
+    } catch (err) {
+        res.json({ message:err });
+    }
+});
+
 module.exports = router;
 

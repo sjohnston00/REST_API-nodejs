@@ -3,11 +3,38 @@ POST http://localhost:3000/posts
 Content-Type: application/json
 
 {
-    "title":"first post",
-    "description":"sdfkjsdlfkjsdflk"
+    "title":"testing post",
+    "description":"This is a post for testing purposes"
 }
 
 ###
 
 #Get all the posts from the database
 GET http://localhost:3000/posts
+
+###
+
+#Get a specific post in the database
+GET http://localhost:3000/posts/5eebe17586df89400cb4ea44
+
+###
+
+#Updating a specific post in the database
+PATCH  http://localhost:3000/posts/5eebe17586df89400cb4ea44
+Content-Type: application/json
+
+{
+    "title":"testing updating the testing post",
+    "description":"This is a post has been updated using PATCH"
+}
+
+###
+
+#Remove a specific post from the database
+DELETE http://localhost:3000/posts/5eebe17586df89400cb4ea44
+
+
+
+
+
+

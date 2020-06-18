@@ -1,3 +1,4 @@
+#Create a new post in the database#
 POST http://localhost:3000/posts
 Content-Type: application/json
 
@@ -7,3 +8,6 @@ Content-Type: application/json
 }
 
 ###
+
+#Get all the posts from the database
+GET http://localhost:3000/posts

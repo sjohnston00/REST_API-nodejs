@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const Post = require('../models/Post');
 
 //get all the posts from the database
 router.get('/', async(req, res) => {
     try {
-        const posts = await Post.find();        
-        res.json(posts);
+        const posts = await Post.find();
+        res.send('SDSDSDSDSDSDSDSD');
     } catch (err) {
-        res.json({ message:err });
+        res.json({ message: err });
     }
 });
 

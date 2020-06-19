@@ -1,19 +1,21 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const path = require('path');
 const bodyParser = require('body-parser');
 require('dotenv/config');
 
 app.use(bodyParser.json());
+
 
 //import the posts router
 const postRouter = require('./routes/posts')
 app.use('/posts', postRouter);
 
 
-//ROUTES
+//ROUTES 
 app.get('/', (req, res) => {
-    res.send('Home');
+    res.sendFile(path.join(__dirname + '/views/index.html')) //rendering a simple HTML file
 });
 
 //open the server
